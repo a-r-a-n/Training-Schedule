@@ -10,9 +10,7 @@ HistoryDialog::HistoryDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Connect return button click to returnClicked slot
     connect(ui->returnButton, &QPushButton::clicked, this, &HistoryDialog::returnClicked);
-    // Connect clear history button click to clearHistory slot
     connect(ui->clearButton, &QPushButton::clicked, this, &HistoryDialog::clearHistory);
 
     // Load history from file when dialog is created
@@ -22,10 +20,10 @@ HistoryDialog::HistoryDialog(QWidget *parent) :
         QStringList entries;
         while (!in.atEnd()) {
             QString line = in.readLine();
-            entries.append(line); // Append each line to the list
+            entries.append(line); 
         }
         file.close();
-        addEntries(entries); // Add all entries to the history dialog at once
+        addEntries(entries); 
     } else {
         QMessageBox::warning(this, "Error", "Unable to load history.");
     }
